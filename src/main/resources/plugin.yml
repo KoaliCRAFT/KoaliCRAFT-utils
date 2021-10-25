@@ -1,0 +1,22 @@
+name: KoaliCRAFTUtils
+version: 1.1
+main: ch.hekates.kcutils.koalicraftutils.KoaliCraft
+api-version: 1.17
+authors: [ Hekates ]
+
+commands:
+  rules:
+    permission: "rules.use"
+  report:
+    permission: "report.use"
+  flypad:
+  grave:
+  stats:
+  statistics:
+  musicblock:
+
+permissions:
+  kc.plot:
+    default: op
+  kc.team:
+    default: op
