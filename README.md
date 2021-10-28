@@ -7,7 +7,7 @@
     Beim Ausführen dieses Commands werden im Chat alle Regeln, die für den (Discord)Server gelten angezeigt.
     
   report:
-    Mit dem Command: /report [Spieler] <Grund> kann man Spieler anzeigen, die etwas Verbrochen haben. Die admins werden dann mit den informationen benachrichtigt.
+      Mit dem Command: /report [Spieler] <Grund> kann man Spieler anzeigen, die etwas Verbrochen haben. Die admins werden dann mit den informationen benachrichtigt.
  
   flypad:
      Mit diesem Command kriegt man ein Item, mit welchem man ein Flypad spawnen kann, welches einen in die Luft wirft.
