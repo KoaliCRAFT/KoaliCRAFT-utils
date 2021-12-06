@@ -10,10 +10,12 @@ commands:
   report:
     permission: "report.use"
   flypad:
+    permission: kc.team
   grave:
   stats:
   statistics:
-  musicblock:
+  status:
+    usage: "Usage: /<command> <status>"
 
 permissions:
   kc.plot:

@@ -15,21 +15,22 @@ public final class KoaliCraft extends JavaPlugin {
         plugin = this;
 
         //Commands
-        this.getCommand("rules").setExecutor(new RuleCommand());
-        this.getCommand("report").setExecutor(new ReportCommand());
-        this.getCommand("flypad").setExecutor(new GetFlypadCommand());
-        this.getCommand("grave").setExecutor(new GraveCommand());
-        this.getCommand("stats").setExecutor(new StatsCommand());
-        this.getCommand("statistics").setExecutor(new StatsCommand());
-        this.getCommand("musicblock").setExecutor(new GetMusicBlockCommand());
+        getCommand("rules").setExecutor(new RuleCommand());
+        getCommand("report").setExecutor(new ReportCommand());
+        getCommand("flypad").setExecutor(new GetFlypadCommand());
+        getCommand("grave").setExecutor(new GraveCommand());
+        getCommand("stats").setExecutor(new StatsCommand());
+        getCommand("statistics").setExecutor(new StatsCommand());
+        getCommand("status").setExecutor(new StatusCommand());
+
+        //Tab Completion
+        getCommand("status").setTabCompleter(new StatusTabComplete());
 
         //Eventlisteners
         Bukkit.getPluginManager().registerEvents(new ChangeWorldListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new FlyBlockListener(),this);
         Bukkit.getPluginManager().registerEvents(new MapClickListener(), this);
-        Bukkit.getPluginManager().registerEvents(new ClickMusicBlockListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlaceMusicBlockListener(), this);
 
     }
 

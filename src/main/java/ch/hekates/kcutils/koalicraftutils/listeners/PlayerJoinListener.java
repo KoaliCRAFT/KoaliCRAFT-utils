@@ -1,7 +1,6 @@
 package ch.hekates.kcutils.koalicraftutils.listeners;
 
 import ch.hekates.kcutils.koalicraftutils.KoaliCraft;
-import ch.hekates.kcutils.koalicraftutils.menus.MusicBlockInventory;
 import ch.hekates.kcutils.koalicraftutils.tablist.TablistManager;
 import ch.hekates.kcutils.koalicraftutils.utils.StatsUtil;
 import org.bukkit.Bukkit;
@@ -37,7 +36,6 @@ public class PlayerJoinListener implements Listener {
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             player.sendMessage(StatsUtil.sendStats(player) + "\n\n§r§e⚠ §8§oFür genauere Statistiken §r§7/statistics §o§8bzw. §r§7/stats Benutzen §e⚠");
         }, 50L);
-        new MusicBlockInventory(player);
     }
 
 }
