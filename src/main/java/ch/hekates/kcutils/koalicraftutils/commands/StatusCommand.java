@@ -27,15 +27,17 @@ public class StatusCommand implements CommandExecutor {
                 String team = args[0];
 
                 if (args[0].toLowerCase().contains("live")) {
-                    team = "Live";
+                    team = "004Live";
                 } else if (args[0].toLowerCase().contains("rec")) {
-                    team = "Rec";
+                    team = "004Rec";
                 } else if (args[0].toLowerCase().contains("cam")) {
-                    team = "Cam";
+                    team = "004Cam";
                 } else if (args[0].toLowerCase().contains("axo")) {
-                    team = "Axo";
+                    team = "004Axo";
                 } else if (args[0].toLowerCase().contains("geb")) {
-                    team = "Geber";
+                    team = "004Geber";
+                } else if (args[0].toLowerCase().contains("reset")) {
+                    team = "001World";
                 } else {
                     player.sendMessage("§cDer Status: " + team + " scheint nicht zu existieren!");
                     return true;

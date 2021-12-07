@@ -16,21 +16,21 @@ public class TablistManager {
         sb.registerNewTeam("001World");
         sb.registerNewTeam("002Nether");
         sb.registerNewTeam("003End");
-        sb.registerNewTeam("Live");
-        sb.registerNewTeam("Rec");
-        sb.registerNewTeam("Cam");
-        sb.registerNewTeam("Axo");
-        sb.registerNewTeam("Geber");
+        sb.registerNewTeam("004Live");
+        sb.registerNewTeam("004Rec");
+        sb.registerNewTeam("004Cam");
+        sb.registerNewTeam("004Axo");
+        sb.registerNewTeam("004Geber");
 
         //zuweisung der Präfixen zu den Teams
-        sb.getTeam("001World").setPrefix("§2■§8| §7");
-        sb.getTeam("002Nether").setPrefix("§4■§8| §7");
-        sb.getTeam("003End").setPrefix("§e■§8| §7");
-        sb.getTeam("Live").setSuffix("§d[⚫Live]");
-        sb.getTeam("Rec").setSuffix("§c[⚫Rec]");
-        sb.getTeam("Cam").setSuffix("§7[Cam]");
-        sb.getTeam("Axo").setSuffix("§d[Axolotl]");
-        sb.getTeam("Geber").setSuffix("§3[Geber]");
+        sb.getTeam("001World").setPrefix(" §2■ §8| ");
+        sb.getTeam("002Nether").setPrefix(" §4■ §8| ");
+        sb.getTeam("003End").setPrefix(" §e■ §8| ");
+        sb.getTeam("004Live").setSuffix(" §d[Live]");
+        sb.getTeam("004Rec").setSuffix(" §c[Rec]");
+        sb.getTeam("004Cam").setSuffix(" §7[Cam]");
+        sb.getTeam("004Axo").setSuffix(" §d[Axolotl]");
+        sb.getTeam("004Geber").setSuffix(" §3[Geber]");
 
 
         for (Player all : Bukkit.getOnlinePlayers()) {
@@ -42,15 +42,24 @@ public class TablistManager {
         String team;
 
         //Weist die Teams zu, je nach Welt
-        if (player.getWorld().getName().equals("world")) {
-            team = "001World";
-        } else if (player.getWorld().getName().equals("world_nether")) {
-            team = "002Nether";
-        } else {
-            team = "003End";
+        if (!player.getScoreboard().getTeams().contains("004")){
+            sb.getTeam("001World").addEntry(player.getName());
+            player.setScoreboard(sb);
         }
-        sb.getTeam(team).addEntry(player.getName());
-        player.setScoreboard(sb);
+
+        if (player.getWorld().getName().equals("world") && (sb.getTeam("002Nether").getPlayers().contains(player) || sb.getTeam("003End").getPlayers().contains(player)) && !(sb.getTeam("001World").getPlayers().contains(player))) {
+            team = "001World";
+            sb.getTeam(team).addEntry(player.getName());
+            player.setScoreboard(sb);
+        } else if (player.getWorld().getName().equals("world_nether") && (sb.getTeam("001World").getPlayers().contains(player) || sb.getTeam("003End").getPlayers().contains(player)) && !(sb.getTeam("002Nether").getPlayers().contains(player))) {
+            team = "002Nether";
+            sb.getTeam(team).addEntry(player.getName());
+            player.setScoreboard(sb);
+        } else if (player.getWorld().getName().equals("world_the_end") && (sb.getTeam("001World").getPlayers().contains(player) || sb.getTeam("002Nether").getPlayers().contains(player)) && !(sb.getTeam("003End").getPlayers().contains(player))){
+            team = "003End";
+            sb.getTeam(team).addEntry(player.getName());
+            player.setScoreboard(sb);
+        } else return;
     }
 
     //TABLIST//

@@ -10,7 +10,7 @@ public class StatusTabComplete implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 
-        List<String> list = Arrays.asList("live", "recording", "cam", "axolotl");
+        List<String> list = Arrays.asList("live", "recording", "cam", "axolotl", "reset");
         String input = args[0].toLowerCase();
 
         List<String> completions = null;
