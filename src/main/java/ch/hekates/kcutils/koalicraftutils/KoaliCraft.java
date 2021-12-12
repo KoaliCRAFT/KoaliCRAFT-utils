@@ -22,6 +22,7 @@ public final class KoaliCraft extends JavaPlugin {
         getCommand("stats").setExecutor(new StatsCommand());
         getCommand("statistics").setExecutor(new StatsCommand());
         getCommand("status").setExecutor(new StatusCommand());
+        getCommand("db").setExecutor(new DebugStickCommand());
 
         //Tab Completion
         getCommand("status").setTabCompleter(new StatusTabComplete());

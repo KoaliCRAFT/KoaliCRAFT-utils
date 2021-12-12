@@ -16,6 +16,7 @@ commands:
   statistics:
   status:
     usage: "Usage: /<command> <status>"
+  db:
 
 permissions:
   kc.plot:

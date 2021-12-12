@@ -43,4 +43,8 @@ public class PluginUtils {
     //Liste der Plugins + Datapacks
     public static String
             adddons = "§lPlug-Ins:§r LuckPerms, dynmap, KoaliPanion, EssentialsX, PlotSquared, Multiverse, WorldGuard, BannerMaker, ImageMaps, HeadDB, Chunkmaster, KoaliCRAFTUtils, WorldBorder, HolographicDisplays, DiscordSRV, ChatControl\n\n§lDatapacks:§r Invisible Item Frame by CMD-Golem, Vanilla Tweaks, oneway Elytra by Halbzwilling";
+
+    public static String timeConvert(int time) {
+        return time/24/60 + "d, " + time/60%24 + "h, " + time%60 + "min";
+    }
 }

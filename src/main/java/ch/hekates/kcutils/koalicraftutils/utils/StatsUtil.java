@@ -1,5 +1,6 @@
 package ch.hekates.kcutils.koalicraftutils.utils;
 
+import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
@@ -20,10 +21,28 @@ public class StatsUtil {
         stringbuilder.append("§8>> §7Ping: §8x §e" + player.getPing() + " ms\n");
 
         //Playtime
-        stringbuilder.append("§8>> §7Playtime: §8x §e" + player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 72000 + " h\n");
+        stringbuilder.append("§8>> §7Playtime: §8x §e" + (PluginUtils.timeConvert(player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 1200)) + "\n");
 
         //Kills
-        stringbuilder.append("§8>> §7Kills: §8x §e" + player.getStatistic(Statistic.PLAYER_KILLS) + "\n");
+        if (player.getStatistic(Statistic.PLAYER_KILLS) != 0) {
+            stringbuilder.append("§8>> §7Kills: §8x §e" + player.getStatistic(Statistic.PLAYER_KILLS) + "\n");
+        } else {
+            stringbuilder.append("§8>> §7Kills: §8x §c§lKEINE KILLS VORHANDEN\n");
+        }
+
+        //Deaths
+        if (player.getStatistic(Statistic.DEATHS) != 0) {
+            stringbuilder.append("§8>> §7Deaths: §8x §e" + player.getStatistic(Statistic.DEATHS) + "\n");
+        } else {
+            stringbuilder.append("§8>> §7Deaths: §8x §c§lKEINE DEATHS VORHANDEN\n");
+        }
+
+        //Time since death
+        if (player.getStatistic(Statistic.DEATHS) != 0) {
+            stringbuilder.append("§8>> §7Time since death: §8x §e" + (PluginUtils.timeConvert(player.getStatistic(Statistic.TIME_SINCE_DEATH) / 1200)) + "\n");
+        } else {
+            stringbuilder.append("§8>> §7Time since death: §8x §c§lKEINE DEATHS VORHANDEN\n");
+        }
 
         ///Build///
         stats = stringbuilder.toString();

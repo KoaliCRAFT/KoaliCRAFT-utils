@@ -1,5 +1,6 @@
 package ch.hekates.kcutils.koalicraftutils.tablist;
 
+import ch.hekates.kcutils.koalicraftutils.utils.PluginUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
@@ -87,7 +88,7 @@ public class TablistManager {
 
         //Tablist Footer
         player.setPlayerListFooter(" " + "\n§8>> §7Playtime §8x §7"
-                + (player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 72000) + " h§8 <<"
+                + (PluginUtils.timeConvert(player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 1200)) + "§8 <<"
                 + "\n \n§8>> §7Webseite: §8x §ekoalicraft.eu§8 <<"
                 + "\n§8>> §7Hoster: §8x §enitrado.net§8 <<\n "
         );
