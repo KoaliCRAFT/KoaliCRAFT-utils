@@ -16,13 +16,13 @@ public final class KoaliCraft extends JavaPlugin {
 
         //Commands
         getCommand("rules").setExecutor(new RuleCommand());
-        getCommand("report").setExecutor(new ReportCommand());
         getCommand("flypad").setExecutor(new GetFlypadCommand());
         getCommand("grave").setExecutor(new GraveCommand());
         getCommand("stats").setExecutor(new StatsCommand());
         getCommand("statistics").setExecutor(new StatsCommand());
         getCommand("status").setExecutor(new StatusCommand());
         getCommand("db").setExecutor(new DebugStickCommand());
+        getCommand("enderchest").setExecutor(new ECCommand());
 
         //Tab Completion
         getCommand("status").setTabCompleter(new StatusTabComplete());

@@ -22,7 +22,7 @@ public class PlayerJoinListener implements Listener {
 
         TablistManager.setScoreboard();
         //Join Message
-        event.setJoinMessage("Willkommen §e" + player.getDisplayName() + " §rauf §9Koali§7§lCRAFT");
+        event.setJoinMessage("Willkommen §e" + player.getDisplayName() + " §rauf §9Koali§7§lCRAFT\n");
         //Join Title
         player.sendTitle("Hi §e" + player.getDisplayName(), "Viel spass!", 10, 40, 20);
         //Join Sounds

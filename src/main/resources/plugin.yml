@@ -7,8 +7,6 @@ authors: [ Hekates ]
 commands:
   rules:
     permission: "rules.use"
-  report:
-    permission: "report.use"
   flypad:
     permission: kc.team
   grave:
@@ -17,6 +15,9 @@ commands:
   status:
     usage: "Usage: /<command> <status>"
   db:
+  enderchest:
+    aliases: [ec]
+    permission: kc.ec
 
 permissions:
   kc.plot:

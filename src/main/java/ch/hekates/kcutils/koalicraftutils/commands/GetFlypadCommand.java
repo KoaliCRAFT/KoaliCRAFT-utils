@@ -29,7 +29,7 @@ public class GetFlypadCommand implements CommandExecutor {
 
 
             List lore = new ArrayList();
-            lore.add("Rechtsclick zum Platzieren eines Flypads");
+            lore.add("§8>> §7Rechtsclick zum Platzieren eines §bFlypads §8<<");
 
             Player player = (Player)sender;
             //Gibt Flypadspawner

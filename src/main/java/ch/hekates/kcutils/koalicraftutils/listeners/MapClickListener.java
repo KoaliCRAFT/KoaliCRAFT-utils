@@ -17,17 +17,17 @@ public class MapClickListener implements Listener {
         
         Player player = event.getPlayer();
         if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if(event.getClickedBlock().getLocation().getBlockY() == 202){
-                if(event.getClickedBlock().getLocation().getBlockZ() == -279){
-                    if(event.getClickedBlock().getLocation().getBlockX() == 415){
+            if(event.getClickedBlock().getLocation().getBlockY() == 201){
+                if(event.getClickedBlock().getLocation().getBlockZ() == 328){
+                    if(event.getClickedBlock().getLocation().getBlockX() == 29){
                         player.sendMessage(PluginUtils.rules);
-                    }else if(event.getClickedBlock().getLocation().getBlockX() == 413){
-
+                    }else if(event.getClickedBlock().getLocation().getBlockX() == 30){
+                        player.sendMessage("§8--§e§lSpieler§r§8--§r\n");
                         for (OfflinePlayer whitelistedPlayer : Bukkit.getServer().getWhitelistedPlayers()) {
-                            player.sendMessage(whitelistedPlayer.getName());
+                            player.sendMessage("§7" + whitelistedPlayer.getName());
                         }
 
-                    }else if(event.getClickedBlock().getLocation().getBlockX() == 411){
+                    }else if(event.getClickedBlock().getLocation().getBlockX() == 31){
                         player.sendMessage(PluginUtils.adddons);
                     }else {
                         return;
