@@ -10,11 +10,11 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class ECCommand implements CommandExecutor {
+public class InvseeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (label.equalsIgnoreCase("enderchest") || label.equalsIgnoreCase("ec")) {
-            if (!sender.hasPermission("kc.ec")) {
+        if (label.equalsIgnoreCase("invsee") || label.equalsIgnoreCase("inv")) {
+            if (!sender.hasPermission("kc.team")) {
                 sender.sendMessage("§cDu hast keine Rechte, du Retard.");
                 return true;
             }
@@ -23,42 +23,40 @@ public class ECCommand implements CommandExecutor {
                 return true;
             }
             if (args.length > 0) {
-                if (!sender.hasPermission("kc.team")) {
-                    sender.sendMessage("§cDu hast keine Berechtigung, die Enderschest von anderen zu öffnen!");
-                } else if (args.length == 2) {
+                if (args.length == 2) {
                     if (Objects.equals(args[1], "-s") && Bukkit.getPlayer(args[0]) != null) {
-                        openEnderchest((Player) sender, Bukkit.getPlayer(args[0]), true);
+                        openInventory((Player) sender, Bukkit.getPlayer(args[0]), true);
                     } else {
                         Player player = (Player) sender;
                         player.sendMessage("§8>> §cDer Spieler: §e§l" + args[0] + " §cist nicht online oder existiert nicht §8<<");}
                 } else if(Bukkit.getPlayer(args[0]) != null) {
-                    openEnderchest((Player) sender, Bukkit.getPlayer(args[0]), false);
+                    openInventory((Player) sender, Bukkit.getPlayer(args[0]), false);
                 }else {
                     Player player = (Player) sender;
                     player.sendMessage("§8>> §cDer Spieler: §e§l" + args[0] + " §cist nicht online oder existiert nicht §8<<");
                 }
             } else {
-                openEnderchest((Player) sender, (Player) sender, true);
+                openInventory((Player) sender, (Player) sender, true);
             }
         }
         return false;
     }
 
-    public static void openEnderchest(Player sender, Player target, boolean silent) {
-        sender.openInventory(target.getEnderChest());
-        sender.playSound(sender.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 0);
-        sender.playEffect(sender.getLocation(), Effect.ENDER_SIGNAL, 0);
+    public static void openInventory(Player sender, Player target, boolean silent) {
         String zusatz = "";
-        if (silent){
+        if (silent) {
             zusatz = " §7§osilent";
         }
         if (sender != target) {
-            sender.sendMessage("§8>> §7Du hast erfolgreich die §5Enderchest §7von §e" + target.getName().toString() + zusatz + "§7 geöffnet! §8<<");
+            sender.sendMessage("§8>> §7Du hast erfolgreich das §aInventar §7von §e" + target.getName().toString() + zusatz + "§7 geöffnet! §8<<");
+            sender.openInventory(target.getInventory());
+            sender.playSound(sender.getLocation(), Sound.ITEM_AXE_WAX_OFF, 1, 0);
+            sender.playEffect(sender.getLocation(), Effect.COPPER_WAX_OFF, 0);
             if (!silent) {
-                target.sendMessage("§8>> §7Deine §5Enderchest §7wurde von §e" + sender.getName().toString() + "§7 geöffnet! §8<<");
+                target.sendMessage("§8>> §7Dein §aInventar §7wurde von §e" + sender.getName().toString() + "§7 geöffnet! §8<<");
             }
         } else {
-            sender.sendMessage("§8>> §7Du hast erfolgreich deine §5Enderchest §7geöffnet! §8<<");
+            sender.sendMessage("§8>> §7Du kannst dein eigenes §aInventar nicht öffnen! §8<<");
         }
     }
 }

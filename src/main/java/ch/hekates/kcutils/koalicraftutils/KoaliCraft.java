@@ -23,8 +23,9 @@ public final class KoaliCraft extends JavaPlugin {
         getCommand("status").setExecutor(new StatusCommand());
         getCommand("db").setExecutor(new DebugStickCommand());
         getCommand("enderchest").setExecutor(new ECCommand());
+        getCommand("invsee").setExecutor(new InvseeCommand());
 
-        //Tab Completion
+        //Tab Completion<
         getCommand("status").setTabCompleter(new StatusTabComplete());
 
         //Eventlisteners

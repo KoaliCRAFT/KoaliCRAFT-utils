@@ -18,6 +18,9 @@ commands:
   enderchest:
     aliases: [ec]
     permission: kc.ec
+  invsee:
+    aliases: [inv]
+    permission: kc.team
 
 permissions:
   kc.plot:

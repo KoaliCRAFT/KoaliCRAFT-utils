@@ -38,12 +38,6 @@
             <version>1.18-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.IPVP-MC</groupId>
-            <artifactId>canvas</artifactId>
-            <version>master-2047a9372b-1</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
     <!-- Plugin Build Settings -->
     <build>
