@@ -21,9 +21,15 @@ commands:
   invsee:
     aliases: [inv]
     permission: kc.team
+  enderdrop:
+    aliases: [ed]
+    permission: kc.enderdrop
+
 
 permissions:
   kc.plot:
     default: op
   kc.team:
+    default: op
+  kc.enderdrop:
     default: op

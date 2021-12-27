@@ -28,12 +28,12 @@ public class InvseeCommand implements CommandExecutor {
                         openInventory((Player) sender, Bukkit.getPlayer(args[0]), true);
                     } else {
                         Player player = (Player) sender;
-                        player.sendMessage("§8>> §cDer Spieler: §e§l" + args[0] + " §cist nicht online oder existiert nicht §8<<");}
+                        player.sendMessage("§8>> §cDer Spieler: §e§l" + args[0] + " §cist nicht online oder existiert nicht!");}
                 } else if(Bukkit.getPlayer(args[0]) != null) {
                     openInventory((Player) sender, Bukkit.getPlayer(args[0]), false);
                 }else {
                     Player player = (Player) sender;
-                    player.sendMessage("§8>> §cDer Spieler: §e§l" + args[0] + " §cist nicht online oder existiert nicht §8<<");
+                    player.sendMessage("§8>> §cDer Spieler: §e§l" + args[0] + " §cist nicht online oder existiert nicht!");
                 }
             } else {
                 openInventory((Player) sender, (Player) sender, true);
@@ -48,15 +48,15 @@ public class InvseeCommand implements CommandExecutor {
             zusatz = " §7§osilent";
         }
         if (sender != target) {
-            sender.sendMessage("§8>> §7Du hast erfolgreich das §aInventar §7von §e" + target.getName().toString() + zusatz + "§7 geöffnet! §8<<");
+            sender.sendMessage("§8>> §7Du hast erfolgreich das §aInventar §7von §e" + target.getName().toString() + zusatz + "§7 geöffnet!");
             sender.openInventory(target.getInventory());
             sender.playSound(sender.getLocation(), Sound.ITEM_AXE_WAX_OFF, 1, 0);
             sender.playEffect(sender.getLocation(), Effect.COPPER_WAX_OFF, 0);
             if (!silent) {
-                target.sendMessage("§8>> §7Dein §aInventar §7wurde von §e" + sender.getName().toString() + "§7 geöffnet! §8<<");
+                target.sendMessage("§8>> §7Dein §aInventar §7wurde von §e" + sender.getName().toString() + "§7 geöffnet!");
             }
         } else {
-            sender.sendMessage("§8>> §7Du kannst dein eigenes §aInventar nicht öffnen! §8<<");
+            sender.sendMessage("§8>> §7Du kannst dein eigenes §aInventar nicht öffnen!");
         }
     }
 }
