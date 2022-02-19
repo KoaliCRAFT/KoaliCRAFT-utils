@@ -31,7 +31,12 @@ public class PlayerJoinListener implements Listener {
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1f, 1f);
         }, 2L);
         //Tablist
-        TablistManager.sendTablistHeaderAndFooter( player );
+        TablistManager.setTeams(player);
+        TablistManager.setScoreboard();
+        for(Player all : Bukkit.getServer().getOnlinePlayers())
+        {
+            TablistManager.sendTablistHeaderAndFooter(player);
+        }
         ///Statistics///
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             player.sendMessage(StatsUtil.sendStats(player) + "\n\n§r§e⚠ §8§oFür genauere Statistiken §r§7/statistics §o§8bzw. §r§7/stats Benutzen §e⚠");

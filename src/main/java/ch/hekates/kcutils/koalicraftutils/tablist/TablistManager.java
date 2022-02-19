@@ -23,6 +23,7 @@ public class TablistManager {
         sb.registerNewTeam("004Cam");
         sb.registerNewTeam("004Axo");
         sb.registerNewTeam("004Geber");
+        sb.registerNewTeam("005AFK");
 
         //zuweisung der Präfixen zu den Teams
         sb.getTeam("001World").setPrefix(" §2■ §8| ");
@@ -33,6 +34,8 @@ public class TablistManager {
         sb.getTeam("004Cam").setSuffix(" §7[Cam]");
         sb.getTeam("004Axo").setSuffix(" §d[Axolotl]");
         sb.getTeam("004Geber").setSuffix(" §3[Geber]");
+        sb.getTeam("005AFK").setSuffix(" [AFK]");
+        sb.getTeam("005AFK").setPrefix("§7§o");
 
 
         for (Player all : Bukkit.getOnlinePlayers()) {
@@ -40,27 +43,29 @@ public class TablistManager {
         }
     }
 
-    private static void setTeams(Player player) {
+    public static void setTeams(Player player) {
         String team;
 
         //Weist die Teams zu, je nach Welt
-        if (!player.getScoreboard().getTeams().contains("004")){
-            sb.getTeam("001World").addEntry(player.getName());
-            player.setScoreboard(sb);
-        }
+        if (player.getScoreboard().getTeams().contains("001") || player.getScoreboard().getTeams().contains("002") || player.getScoreboard().getTeams().contains("003") || player.getScoreboard().getTeams().isEmpty()) {
+            if (!player.getScoreboard().getTeams().contains("004")) {
+                sb.getTeam("001World").addEntry(player.getName());
+                player.setScoreboard(sb);
+            }
 
-        if (player.getWorld().getName().equals("world") && (sb.getTeam("002Nether").getPlayers().contains(player) || sb.getTeam("003End").getPlayers().contains(player)) && !(sb.getTeam("001World").getPlayers().contains(player))) {
-            team = "001World";
-            sb.getTeam(team).addEntry(player.getName());
-            player.setScoreboard(sb);
-        } else if (player.getWorld().getName().equals("world_nether") && (sb.getTeam("001World").getPlayers().contains(player) || sb.getTeam("003End").getPlayers().contains(player)) && !(sb.getTeam("002Nether").getPlayers().contains(player))) {
-            team = "002Nether";
-            sb.getTeam(team).addEntry(player.getName());
-            player.setScoreboard(sb);
-        } else if (player.getWorld().getName().equals("world_the_end") && (sb.getTeam("001World").getPlayers().contains(player) || sb.getTeam("002Nether").getPlayers().contains(player)) && !(sb.getTeam("003End").getPlayers().contains(player))){
-            team = "003End";
-            sb.getTeam(team).addEntry(player.getName());
-            player.setScoreboard(sb);
+            if (player.getWorld().getName().equals("world") && (sb.getTeam("002Nether").getPlayers().contains(player) || sb.getTeam("003End").getPlayers().contains(player)) && !(sb.getTeam("001World").getPlayers().contains(player))) {
+                team = "001World";
+                sb.getTeam(team).addEntry(player.getName());
+                player.setScoreboard(sb);
+            } else if (player.getWorld().getName().equals("world_nether") && (sb.getTeam("001World").getPlayers().contains(player) || sb.getTeam("003End").getPlayers().contains(player)) && !(sb.getTeam("002Nether").getPlayers().contains(player))) {
+                team = "002Nether";
+                sb.getTeam(team).addEntry(player.getName());
+                player.setScoreboard(sb);
+            } else if (player.getWorld().getName().equals("world_the_end") && (sb.getTeam("001World").getPlayers().contains(player) || sb.getTeam("002Nether").getPlayers().contains(player)) && !(sb.getTeam("003End").getPlayers().contains(player))) {
+                team = "003End";
+                sb.getTeam(team).addEntry(player.getName());
+                player.setScoreboard(sb);
+            } else return;
         } else return;
     }
 
@@ -71,7 +76,7 @@ public class TablistManager {
         //Setzt den Name der Welt je nach Welt
         if (player.getWorld().getName().equals("world")) {
             welt = "Survival";
-        } else if (player.getWorld().getName().equals("world_nether")){
+        } else if (player.getWorld().getName().equals("world_nether")) {
             welt = "Nether";
         } else {
             welt = "End";
@@ -90,8 +95,7 @@ public class TablistManager {
         player.setPlayerListFooter(" " + "\n§8>> §7Playtime §8x §7"
                 + (PluginUtils.timeConvert(player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 1200)) + "§8 <<"
                 + "\n \n§8>> §7Webseite: §8x §ekoalicraft.eu§8 <<"
-                + "\n§8>> §7Hoster: §8x §enitrado.net§8 <<\n "
+                + "\n§8>> §7Hoster: §8x §eg-portal.com§8 <<\n "
         );
     }
-
 }

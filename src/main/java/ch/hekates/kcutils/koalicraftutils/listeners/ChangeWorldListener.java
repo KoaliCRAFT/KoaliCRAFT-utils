@@ -1,6 +1,8 @@
 package ch.hekates.kcutils.koalicraftutils.listeners;
 
 import ch.hekates.kcutils.koalicraftutils.tablist.TablistManager;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -11,7 +13,13 @@ public class ChangeWorldListener implements Listener {
     //Reloadet dinge beim Worldchange
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onWorldChange(PlayerChangedWorldEvent event) {
+        Player  player = event.getPlayer();
+
+        TablistManager.setTeams(player);
         TablistManager.setScoreboard();
-        TablistManager.sendTablistHeaderAndFooter(event.getPlayer());
+        for(Player all : Bukkit.getServer().getOnlinePlayers())
+        {
+            TablistManager.sendTablistHeaderAndFooter(player);
+        }
     }
 }

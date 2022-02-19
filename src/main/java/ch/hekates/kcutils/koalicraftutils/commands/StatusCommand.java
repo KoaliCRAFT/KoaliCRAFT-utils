@@ -36,6 +36,8 @@ public class StatusCommand implements CommandExecutor {
                     team = "004Axo";
                 } else if (args[0].toLowerCase().contains("geb")) {
                     team = "004Geber";
+                } else if (args[0].toLowerCase().contains("afk")) {
+                    team = "005AFK";
                 } else if (args[0].toLowerCase().contains("reset")) {
                     team = "001World";
                 } else {
