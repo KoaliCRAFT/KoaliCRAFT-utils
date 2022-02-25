@@ -22,7 +22,11 @@ public class EnderDropCommand implements CommandExecutor {
 
                 if (Bukkit.getPlayer(args[0]) != null) {
                     Player target = Bukkit.getPlayer(args[0]);
-                    ItemStack transferItem = player.getInventory().getItemInMainHand();
+                    int transferAmount = player.getInventory().getItemInMainHand().getAmount();
+                    ItemStack transferItem = new ItemStack(player.getInventory().getItemInMainHand().getType(), transferAmount);
+
+                    String name = transferItem.getType().name().replaceAll("_"," ").toUpperCase();
+
 
                     if (target == player){
                         player.sendMessage("§8>> §7Du kannst dir selbst kein Item überreichen!");
@@ -37,7 +41,7 @@ public class EnderDropCommand implements CommandExecutor {
                         target.getInventory().addItem(transferItem);
                         player.getInventory().remove(transferItem);
                         player.sendMessage("§8>> §7Du hast §e" + target.getName().toString() + " erfolgreich ein Item per §5§lEnder§9Drop §r§7gesendet!");
-                        target.sendMessage("§8>> §7Du hast erfolgreich ein Item per §5§lEnder§9Drop §r§7von §e" + player.getName() + "§7 erhalten!");
+                        target.sendMessage("§8>> §7Du hast erfolgreich §e§l" + transferAmount + " " + name +  " §r§7per §5§lEnder§9Drop §r§7von §e" + player.getName() + "§7 erhalten!");
 
                     } else {
                         player.sendMessage("§8>> §cDu kannst dem Spieler: §e§l" + args[0] + " §ckein Item übergeben, da dieser keinen freien Slot im Inventar hat!");

@@ -1,19 +1,18 @@
 name: KoaliCRAFTUtils
 version: 1.1
-main: ch.hekates.kcutils.koalicraftutils.KoaliCraft
+main: ch.hekates.kcutils.koalicraftutils.Main
 api-version: 1.18
 authors: [ Hekates ]
 
 commands:
   rules:
-    permission: "rules.use"
+    permission: rules.use
   flypad:
     permission: kc.team
   grave:
   stats:
   statistics:
   status:
-    usage: "Usage: /<command> <status>"
   db:
   enderchest:
     aliases: [ec]

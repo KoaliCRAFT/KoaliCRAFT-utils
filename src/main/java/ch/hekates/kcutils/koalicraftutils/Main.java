@@ -5,9 +5,9 @@ import ch.hekates.kcutils.koalicraftutils.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class KoaliCraft extends JavaPlugin {
+public final class Main extends JavaPlugin {
 
-    private static KoaliCraft plugin;
+    private static Main plugin;
 
     @Override
     public void onEnable() {
@@ -37,12 +37,7 @@ public final class KoaliCraft extends JavaPlugin {
 
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
-
-    public static KoaliCraft getPlugin() {
+    public static Main getPlugin() {
         return plugin;
     }
 

@@ -1,6 +1,6 @@
 package ch.hekates.kcutils.koalicraftutils.listeners;
 
-import ch.hekates.kcutils.koalicraftutils.KoaliCraft;
+import ch.hekates.kcutils.koalicraftutils.Main;
 import ch.hekates.kcutils.koalicraftutils.tablist.TablistManager;
 import ch.hekates.kcutils.koalicraftutils.utils.StatsUtil;
 import org.bukkit.Bukkit;
@@ -18,9 +18,8 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        Plugin plugin = KoaliCraft.getPlugin(KoaliCraft.class);
+        Plugin plugin = Main.getPlugin(Main.class);
 
-        TablistManager.setScoreboard();
         //Join Message
         event.setJoinMessage("Willkommen §e" + player.getDisplayName() + " §rauf §9Koali§7§lCRAFT\n");
         //Join Title
@@ -30,13 +29,16 @@ public class PlayerJoinListener implements Listener {
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1f, 1f);
         }, 2L);
+
+
         //Tablist
         TablistManager.setTeams(player);
         TablistManager.setScoreboard();
         for(Player all : Bukkit.getServer().getOnlinePlayers())
         {
-            TablistManager.sendTablistHeaderAndFooter(player);
+            TablistManager.sendTablistHeaderAndFooter(all);
         }
+
         ///Statistics///
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             player.sendMessage(StatsUtil.sendStats(player) + "\n\n§r§e⚠ §8§oFür genauere Statistiken §r§7/statistics §o§8bzw. §r§7/stats Benutzen §e⚠");
