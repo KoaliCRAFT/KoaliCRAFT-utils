@@ -15,11 +15,6 @@ public class ChangeWorldListener implements Listener {
     public void onWorldChange(PlayerChangedWorldEvent event) {
         Player  player = event.getPlayer();
 
-        TablistManager.setTeams(player);
-        TablistManager.setScoreboard();
-        for(Player all : Bukkit.getServer().getOnlinePlayers())
-        {
-            TablistManager.sendTablistHeaderAndFooter(player);
-        }
+        TablistManager.setPlayerTeams(player);
     }
 }

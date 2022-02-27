@@ -32,12 +32,8 @@ public class PlayerJoinListener implements Listener {
 
 
         //Tablist
-        TablistManager.setTeams(player);
-        TablistManager.setScoreboard();
-        for(Player all : Bukkit.getServer().getOnlinePlayers())
-        {
-            TablistManager.sendTablistHeaderAndFooter(all);
-        }
+        Main.getPlugin().getTablistManager().setPlayerList(player);
+        Main.getPlugin().getTablistManager().setPlayerTeams(player);
 
         ///Statistics///
         Bukkit.getScheduler().runTaskLater(plugin, () -> {

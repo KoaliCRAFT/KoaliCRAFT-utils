@@ -39,14 +39,19 @@ public class StatusCommand implements CommandExecutor {
                 } else if (args[0].toLowerCase().contains("afk")) {
                     team = "005AFK";
                 } else if (args[0].toLowerCase().contains("reset")) {
-                    team = "001World";
+                    if (player.getWorld().getName().equals("world")){
+                        team = "001World";
+                    } else if (player.getWorld().getName().equals("world_nether")){
+                        team = "002Nether";
+                    } else if (player.getWorld().getName().equals("world_the_end")) {
+                        team = "003End";
+                    }
                 } else {
                     player.sendMessage("§cDer Status: " + team + " scheint nicht zu existieren!");
                     return true;
                 }
 
-                TablistManager.sb.getTeam(team).addEntry(player.getName());
-                player.setScoreboard(TablistManager.sb);
+                player.getScoreboard().getTeam(team).addEntry(player.getName());
             }
         }
         return false;

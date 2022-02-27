@@ -2,12 +2,15 @@ package ch.hekates.kcutils.koalicraftutils;
 
 import ch.hekates.kcutils.koalicraftutils.commands.*;
 import ch.hekates.kcutils.koalicraftutils.listeners.*;
+import ch.hekates.kcutils.koalicraftutils.tablist.TablistManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
     private static Main plugin;
+
+    private TablistManager tablistManager;
 
     @Override
     public void onEnable() {
@@ -35,10 +38,15 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new FlyBlockListener(),this);
         Bukkit.getPluginManager().registerEvents(new MapClickListener(), this);
 
+        tablistManager = new TablistManager();
+
     }
 
     public static Main getPlugin() {
         return plugin;
     }
 
+    public TablistManager getTablistManager() {
+        return tablistManager;
+    }
 }
